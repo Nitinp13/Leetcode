@@ -14,39 +14,36 @@
  * }
  */
 class Solution {
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-      TreeNode root = buildTreeUsingPreorderAndInorder(
-          IntStream.of(inorder).boxed().collect(Collectors.toList())
-          , IntStream.of(preorder).boxed().collect(Collectors.toList()) ) ;
-          
-          return root;
+    public static TreeNode buildTree(int[] preOrder, int[] inOrder){
+        int n = preOrder.length;
+
+        int preStart = 0;
+        int preEnd = n-1;
+        int inStart = 0;
+        int inEnd = n-1;
+
+        return buildTreeInorderPreorder(preOrder,preStart,preEnd,inOrder,inStart,inEnd);
     }
-    
-    public static TreeNode buildTreeUsingPreorderAndInorder(List<Integer> inOrder, List<Integer> preOrder){
-        if (inOrder.isEmpty() || preOrder.isEmpty()){
+
+    private static TreeNode buildTreeInorderPreorder(int[] preOrder, int preStart,int preEnd, int[] inOrder,int inStart,int inEnd){
+        if(preStart > preEnd || inStart > inEnd){
             return null;
         }
+        int rootVal = preOrder[preStart];
+        TreeNode root = new TreeNode(rootVal);
 
-        int rootData = preOrder.get(0);
-       TreeNode root = new TreeNode(rootData);
-
-        int rootIndexInorder = 0;
-        for (int i = 0; i < inOrder.size();i++){
-            if (rootData == inOrder.get(i)){
-                rootIndexInorder = i;
-                break;
-            }
+        //Find root element index from inorder array
+        int k = 0;
+        for (int i = inStart; i <= inEnd ; i++) {
+                if(rootVal == inOrder[i]){
+                    k = i;
+                    break;
+                }
         }
-        List<Integer> leftInorder = new ArrayList<>(inOrder.subList(0,rootIndexInorder));
-        List<Integer> rightInorder = new ArrayList<>(inOrder.subList(rootIndexInorder+1, inOrder.size()));
 
-        List<Integer> leftPreOrder = new ArrayList<>(preOrder.subList(1, leftInorder.size() + 1));
-        List<Integer> rightPreOrder = new ArrayList<>(preOrder.subList(leftInorder.size() + 1, preOrder.size()));
-
-        root.left = buildTreeUsingPreorderAndInorder(leftInorder, leftPreOrder);
-        root.right = buildTreeUsingPreorderAndInorder(rightInorder, rightPreOrder);
+        root.left = buildTreeInorderPreorder(preOrder, preStart + 1, preStart + (k - inStart), inOrder, inStart, k-1);
+        root.right = buildTreeInorderPreorder(preOrder,preStart + (k - inStart) + 1,preEnd, inOrder,  k+1,inEnd);
 
         return root;
-
     }
 }
