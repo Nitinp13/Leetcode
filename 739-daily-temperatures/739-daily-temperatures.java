@@ -1,5 +1,5 @@
 class Solution {
-    // Better soln 
+    // Better soln 11 ms
     public int[] dailyTemperatures(int[] temperatures) {
         int n = temperatures.length;
         int hottest = 0;
