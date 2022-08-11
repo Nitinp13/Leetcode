@@ -31,6 +31,7 @@ class Solution {
 //         return st.isEmpty();
 //     }
     //Short soln 3ms
+    // Note if you dont use stack and use character array then the complexity is 0ms
     public boolean isValid(String s) {
 	Stack<Character> stack = new Stack<Character>();
 	for (char c : s.toCharArray()) {
