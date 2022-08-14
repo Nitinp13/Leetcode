@@ -5,8 +5,8 @@ class Solution {
         int[] res = new int[n];
         
         for(int i = 0;i<n;i++){
-            int j = edges[i];
-            res[j] = res[j] + i;
+            
+            res[edges[i]] += i;
         }
         
         int max = 0;
