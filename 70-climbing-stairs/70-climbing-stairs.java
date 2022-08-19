@@ -12,9 +12,9 @@ class Solution {
         
         int count = 0;
         count = climbStairs(n-1) + climbStairs(n-2);
-       // if(!map.containsKey(n)){
+       // if(!map.containsKey(n)){ }
             map.put(n, count);
-        //}
+        
         return count;
         
     }
