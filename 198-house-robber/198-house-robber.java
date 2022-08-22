@@ -1,7 +1,8 @@
 class Solution {
       //   public int rob(int[] nums) {
       // }
-    
+    // Tabulation 1 ms  (Bottom - Up Approach) 
+    // TC -> O(N)   SC - > O(N) 
     public int rob(int[] nums) {
          int[] dp = new int[nums.length];
          Arrays.fill(dp, -1);
