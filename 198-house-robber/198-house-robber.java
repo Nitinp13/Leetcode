@@ -1,5 +1,5 @@
 class Solution {
-      // Tabulation with Space Optimization 1 ms  (Bottom - Up Approach) 
+      // Tabulation with Space Optimization 0 ms  (Bottom - Up Approach) 
     // TC -> O(N)   SC - > O(1) 
     public int rob(int[] a) {
          int[] dp = new int[a.length];
@@ -76,7 +76,7 @@ class Solution {
 //         return dp[index] = Math.max(pick, notPick);
 //     }
     
-    //Normal Recursion TLE  TC -> O(2*N)
+    //Normal Beginners Approach Intuition Recursion TLE  TC -> O(2*N)
 //     public int rob(int[] nums) {
 //        return robRec(nums, nums.length-1);
           
