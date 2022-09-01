@@ -17,11 +17,11 @@ class Solution {
     public int goodNodes(TreeNode root) {
         
         
-        int count = helper(new TreeNode(Integer.MIN_VALUE), root, Integer.MIN_VALUE, true);
+        int count = helper(root, Integer.MIN_VALUE, true);
         return count;
     }
     
-    private int helper(TreeNode prev, TreeNode root, int max, boolean isRoot){
+    private int helper(TreeNode root, int max, boolean isRoot){
         if(root == null) return 0;
         
         int count = 0;
@@ -30,7 +30,7 @@ class Solution {
             System.out.println(root.val);
         }
         max = Math.max(max, root.val);
-        count += helper(root, root.left, max, false) + helper(root, root.right, max, false);
+        count += helper(root.left, max, false) + helper(root.right, max, false);
         return count;
     }
 }
