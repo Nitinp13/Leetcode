@@ -1,9 +1,6 @@
-class Solution {
-//     public void setZeroes(int[][] matrix) {
-        
-//     }
-    
+class Solution {    
     //Third Try
+    //4 ms 
     public void setZeroes(int[][] matrix) {
         int m = matrix.length;
         int n = matrix[0].length;
